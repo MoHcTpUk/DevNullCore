@@ -57,46 +57,6 @@ namespace DevNullCore.Ioc.Extensions
         }
 
         /// <summary>
-        /// Find and add all repository configuration
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="assemblys"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddRepositories(this IServiceCollection services, List<Assembly> assemblys)
-        {
-            var interfaceType = typeof(IRepositoriesConfigurator);
-            var typeList = GetAllInterfaceImplementations(assemblys, interfaceType);
-
-            foreach (var handlerType in typeList)
-            {
-                var repositoriesConfigurator = (IRepositoriesConfigurator)Activator.CreateInstance(handlerType.Implementation);
-                repositoriesConfigurator?.ConfigureRepositories(services);
-            }
-
-            return services;
-        }
-
-        /// <summary>
-        /// Find and add all db context fartory configuration
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="assemblys"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddDbContextFactories(this IServiceCollection services, List<Assembly> assemblys)
-        {
-            var interfaceType = typeof(IContextFactoryConfigurator);
-            var typeList = GetAllInterfaceImplementations(assemblys, interfaceType);
-
-            foreach (var handlerType in typeList)
-            {
-                var contextFactoryConfiguratortor = (IContextFactoryConfigurator)Activator.CreateInstance(handlerType.Implementation);
-                contextFactoryConfiguratortor?.ConfigureContextFactory(services);
-            }
-
-            return services;
-        }
-
-        /// <summary>
         /// Find and add all configuration
         /// </summary>
         /// <param name="services"></param>

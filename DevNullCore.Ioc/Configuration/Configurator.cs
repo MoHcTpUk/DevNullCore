@@ -2,7 +2,6 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DevNullCore.Ioc.Configuration
@@ -26,12 +25,9 @@ namespace DevNullCore.Ioc.Configuration
             var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(_ => !_.IsDynamic).ToList();
 
             serviceCollection
-                .AddRepositories(assemblies)
                 .AddServices(assemblies)
-                .AddDbContextFactories(assemblies)
                 .AddAutoMapperConfigs(assemblies)
                 .AddMediatR(assemblies.ToArray())
-                .AddConfiguration(new List<string> { "config.json" })
                 ;
         }
     }

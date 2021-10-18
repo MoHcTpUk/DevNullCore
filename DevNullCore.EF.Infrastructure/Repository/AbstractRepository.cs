@@ -16,9 +16,9 @@ namespace DevNullCore.EF.Infrastructure.Repository
             _context = context;
         }
 
-        public Task<IEnumerable<TEntity>> Find(Func<TEntity, bool> predicate)
+        public IEnumerable<TEntity> Find(Func<TEntity, bool> predicate)
         {
-            return new Task<IEnumerable<TEntity>>(() => _context.Set<TEntity>().AsNoTracking().AsEnumerable().Where(predicate));
+            return _context.Set<TEntity>().Where(predicate).ToList();
         }
 
         public async Task<TEntity> Create(TEntity entity)

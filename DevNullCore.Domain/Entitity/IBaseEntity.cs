@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DevNullCore.Domain.Entities
+namespace DevNullCore.Domain.Entitity
 {
     public interface IBaseEntity<T>: IBaseEntity
     {

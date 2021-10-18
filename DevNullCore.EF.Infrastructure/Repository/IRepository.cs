@@ -1,7 +1,7 @@
-﻿using System;
+﻿using DevNullCore.Domain.Entitity;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DevNullCore.Domain.Entities;
 
 namespace DevNullCore.EF.Infrastructure.Repository
 {

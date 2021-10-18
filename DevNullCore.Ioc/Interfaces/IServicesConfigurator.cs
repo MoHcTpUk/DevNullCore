@@ -7,6 +7,6 @@ namespace DevNullCore.Ioc.Interfaces
     /// </summary>
     public interface IServicesConfigurator
     {
-        public void ConfigureServices(IServiceCollection serviceCollection);
+        public void ConfigureServices(IServiceCollection services);
     }
 }

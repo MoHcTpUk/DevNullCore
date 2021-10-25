@@ -1,9 +1,9 @@
-﻿using DevNullCore.Domain.Entitity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DevNullCore.Domain.Entitity;
 
-namespace DevNullCore.EF.Infrastructure.Repository
+namespace DevNullCore.Domain.Repository
 {
     public interface IRepository<TEntity> where TEntity : class, IBaseEntity
     {

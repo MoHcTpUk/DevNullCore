@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DevNullCore.Domain.Repository;
 
 namespace DevNullCore.EF.Infrastructure.Repository
 {

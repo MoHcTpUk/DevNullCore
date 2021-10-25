@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevNullCore.EF.Infrastructu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevNullCore.Domain", "DevNullCore.Domain\DevNullCore.Domain.csproj", "{EE1233F3-5E09-4A05-BE7E-3CAB3080D862}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevNullCore.Bus", "DevNullCore.Bus\DevNullCore.Bus.csproj", "{FC2B7143-1F78-496D-8C84-AB0FF570593F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EE1233F3-5E09-4A05-BE7E-3CAB3080D862}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE1233F3-5E09-4A05-BE7E-3CAB3080D862}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE1233F3-5E09-4A05-BE7E-3CAB3080D862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC2B7143-1F78-496D-8C84-AB0FF570593F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC2B7143-1F78-496D-8C84-AB0FF570593F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC2B7143-1F78-496D-8C84-AB0FF570593F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC2B7143-1F78-496D-8C84-AB0FF570593F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

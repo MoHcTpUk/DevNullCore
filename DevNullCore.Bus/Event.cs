@@ -1,14 +1,18 @@
 ﻿using System;
+using DevNullCore.Bus.Interfaces;
 
 namespace DevNullCore.Bus
 {
-    public abstract class Event
+    public class Event : IEvent
     {
-        public DateTime TimeStamp { get; protected set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public DateTime OccurredOn { get; set; }
 
-        protected Event()
+        public Event()
         {
-            TimeStamp = DateTime.Now;
+            Id = Guid.NewGuid();
+            OccurredOn = DateTime.Now;
         }
     }
 }

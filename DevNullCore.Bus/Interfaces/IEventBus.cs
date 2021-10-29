@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace DevNullCore.Bus.Interfaces
+﻿namespace DevNullCore.Bus.Interfaces
 {
     public interface IEventBus
     {

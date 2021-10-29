@@ -1,5 +1,4 @@
 ﻿using DevNullCore.Bus.Interfaces;
-using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -10,24 +9,24 @@ using System.Text;
 
 namespace DevNullCore.Bus
 {
-    public sealed class RabbitMqBus : IEventBus
+    public class RabbitMqBus : IEventBus
     {
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly IConnectionFactory _connectionFactory;
 
-        public RabbitMqBus(IServiceScopeFactory serviceProvider, IConfiguration config)
-        {
-            _serviceScopeFactory = serviceProvider;
+        //public RabbitMqBus(IServiceScopeFactory serviceProvider, IConfiguration config)
+        //{
+        //    _serviceScopeFactory = serviceProvider;
 
-            _connectionFactory = new ConnectionFactory
-            {
-                HostName = config["EventBus:HostName"],
-                Port = int.Parse(config["EventBus:Port"]),
-                UserName = config["EventBus:UserName"],
-                Password = config["EventBus:Password"],
-                DispatchConsumersAsync = true
-            };
-        }
+        //    _connectionFactory = new ConnectionFactory
+        //    {
+        //        HostName = config["EventBus:HostName"],
+        //        Port = int.Parse(config["EventBus:Port"]),
+        //        UserName = config["EventBus:UserName"],
+        //        Password = config["EventBus:Password"],
+        //        DispatchConsumersAsync = true
+        //    };
+        //}
 
         public void Publish<TEvent>(TEvent @event) where TEvent : Event
         {
@@ -45,7 +44,10 @@ namespace DevNullCore.Bus
 
         private static void CreateExchangeIfNotExists(IModel channel, string exchangeName)
         {
-            channel.ExchangeDeclare(exchangeName, ExchangeType.Fanout, true);
+            channel.ExchangeDeclare(
+                exchangeName,
+                ExchangeType.Fanout,
+                true);
         }
 
         public void Subscribe<TEvent, THandler>(string subscriberName)
@@ -66,13 +68,21 @@ namespace DevNullCore.Bus
         {
             CreateExchangeIfNotExists(channel, exchangeName);
 
-            channel.QueueDeclare(subscriberName, true, false, autoDelete: false);
-            channel.QueueBind(subscriberName, exchangeName, string.Empty);
+            channel.QueueDeclare(
+                subscriberName,
+                true,
+                false,
+                false);
+
+            channel.QueueBind(
+                subscriberName,
+                exchangeName,
+                string.Empty);
         }
 
         private void StartBasicConsume<TEvent>(IModel channel, AsyncEventingBasicConsumer consumer, string subscriberName) where TEvent : Event
         {
-            consumer.Received += async (obj, args) =>
+            consumer.Received += async (_, args) =>
             {
                 var jsonMessage = Encoding.UTF8.GetString(args.Body.ToArray());
                 var message = JsonConvert.DeserializeObject<TEvent>(jsonMessage);

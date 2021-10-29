@@ -12,4 +12,8 @@
     <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DevNullCore.Ioc\DevNullCore.Ioc.csproj" />
+  </ItemGroup>
+
 </Project>

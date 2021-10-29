@@ -3,7 +3,7 @@
 namespace DevNullCore.Bus.Interfaces
 {
     public interface IEventHandler<in TEvent> : IEventHandler
-        where TEvent : Event
+        where TEvent : IEvent
     {
         Task Handle(TEvent @event);
     }
